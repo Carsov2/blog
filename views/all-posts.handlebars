@@ -1,0 +1,21 @@
+<h2>All Posts!</h2>
+
+{{#each post as |post|}}
+    <div>
+        <div class="card">
+            <a href="/post/{{post.id}}">
+                <div>
+                    <h3 class="card-header">
+                        {{post.title}}
+                    </h3>
+                    <p>
+                        Posted by {{post.User.username}} on {{format_date post.updatedAt}}
+                    </p>
+                </div>
+            </a>
+            <p>
+                {{post.body}}
+            </p>
+        </div>
+    </div>
+{{/each}}

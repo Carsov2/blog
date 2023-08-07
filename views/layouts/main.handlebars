@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="flex-column ">
+        <header>
+            <nav>
+            {{#if loggedIn}}
+            <div>
+                <a href="/">Home</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/" id="logout-link">Log Out</a>
+            </div>
+            {{else}}
+            <div>
+                <a href="/">Home</a>
+                <a href="/login">Dashboard</a>
+                <a href="/login">Log In</a>
+            </div>
+            {{/if}}
+        </nav>
+        <p class="app-title justify-space-around">The Tech Blog!</p>
+        </header>
+    
+    {{!-- The body will be rendered below --}}
+        <main>
+            <div>
+                {{{ body }}}
+            </div>
+        </main>
+    </div>
+    {{#if loggedIn}} 
+    <script src="/js/logout.js"></script>
+    {{/if}}
+</body>
+</html>

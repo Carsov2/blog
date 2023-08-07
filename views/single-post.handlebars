@@ -1,0 +1,54 @@
+<div>
+    <div>
+        <div>
+            <h3>
+                {{post.title}}
+            </h3>
+            <p>
+                Posted by {{post.User.username}} on {{format_date post.updatedAt}}
+            </p>
+        </div>
+        <p>
+            {{post.body}}
+        </p>
+    </div>
+    <div>
+        {{#each post.Comments as |comment|}}
+        <div>
+            <p>
+                {{comment.body}}
+            </p>
+            <p>
+                By: {{comment.User.username}}
+            </p>
+            <p>
+                {{format_date comment.createdAt}}
+            </p>
+        </div>
+        {{/each}}
+    </div>
+    {{#if loggedIn}} 
+    <div>
+        <form id="new-comment-form">
+            <input type="hidden" name="post-id" value="{{post.id}}">
+            <div>
+                <h3>
+                    New Comment
+                </h3>
+            </div>
+            <div>
+                <textarea id="comment-box" name="comment-body" placeholder="new comment"></textarea>
+                <br>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    {{else}} 
+        <div>
+            <a href="/login">Log in to make comments</a>
+        </div>
+    {{/if}}
+    </div>
+</div>
+{{#if loggedIn}} 
+<script src="/js/comment.js"></script>
+{{/if}}
